@@ -30,13 +30,10 @@ console.log(ipAdresim);
 */
 
 async function getData() {
-  axios
+  return await axios
     .get("https://apis.ergineer.com/ipgeoapi/212.252.116.104")
     .then((response) => {
       return response.data;
-    })
-    .catch((error) => {
-      console.log(error);
     });
 }
 
@@ -61,8 +58,51 @@ async function getData() {
   </div>
 */
 
-function cardOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cardOlustur(data) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const image = document.createElement("img");
+  image.src = "https://flaglog.com/codes/standardized-rectangle-120px/TR.png";
+
+  const cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+
+  const header = document.createElement("h3");
+  header.classList.add("ip");
+  header.textContent = data.sorgu;
+
+  const paragraph1 = document.createElement("p");
+  paragraph1.classList.add("ulke");
+  paragraph1.textContent = `${data.ülke} (${data.ülkeKodu})`;
+
+  const paragraph2 = document.createElement("p");
+  paragraph2.textContent = `Enlem: ${data.enlem} - Boylam: ${data.boylam}`;
+
+  const paragraph3 = document.createElement("p");
+  paragraph3.textContent = `Şehir: ${data.şehir}`;
+
+  const paragraph4 = document.createElement("p");
+  paragraph4.textContent = `Saat dilimi: ${data.saatdilimi}`;
+
+  const paragraph5 = document.createElement("p");
+  paragraph5.textContent = `Para birimi: ${data.parabirimi}`;
+
+  const paragraph6 = document.createElement("p");
+  paragraph6.textContent = `ISP: ${data.isp}`;
+
+  cardInfo.appendChild(header);
+  cardInfo.appendChild(paragraph1);
+  cardInfo.appendChild(paragraph2);
+  cardInfo.appendChild(paragraph3);
+  cardInfo.appendChild(paragraph4);
+  cardInfo.appendChild(paragraph5);
+  cardInfo.appendChild(paragraph6);
+
+  card.appendChild(image);
+  card.appendChild(cardInfo);
+
+  return card;
 }
 
 // Buradan sonrasını değiştirmeyin, burası yazdığınız kodu sayfaya uyguluyor.
