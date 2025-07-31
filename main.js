@@ -30,7 +30,14 @@ console.log(ipAdresim);
 */
 
 async function getData() {
-  /* kodlar buraya */
+  axios
+    .get("https://apis.ergineer.com/ipgeoapi/212.252.116.104")
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
 
 /*
